@@ -1,7 +1,6 @@
 import { useChat } from "../context/ChatContext";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getChats } from "../services/chat";
-import { useEffect } from "react";
 import { auth } from "../services/firebase.js";
 
 function ChatList() {
@@ -14,15 +13,9 @@ function ChatList() {
       queryClient.invalidateQueries({ queryKey: ["users"] });
     },
   });
-  useEffect(() => {
-    console.log("Current chat:", chat);
-  }, [chat]);
-  useEffect(() => {
-    console.log("Chats:", chats);
-  }, [chats]);
-  const handleChat = () => setChat(chatItem);
+  const handleChat = (chatItem) => setChat(chatItem);
   return (
-    <div>
+    <div className="flex flex-col h-full p-4 space-y-4">
       {isLoading ? (
         <div className="flex justify-center items-center h-screen">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500"></div>
@@ -34,7 +27,7 @@ function ChatList() {
           {chats?.map((chatItem) => (
             <li
               key={chatItem.id}
-              onClick={handleChat}
+              onClick={() => handleChat(chatItem)}
               className={`cursor-pointer p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors ${
                 chat?.id === chatItem.id ? "bg-blue-100" : ""
               }`}

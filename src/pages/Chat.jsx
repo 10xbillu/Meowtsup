@@ -39,24 +39,24 @@ function Chat() {
   const [messages] = useMessage(chat?.id);
 
   return (
-    <div className="flex h-screen">
-      <div className="flex h-screen flex-col w-1/2">
+    <div className="flex w-full gap-4 h-screen">
+      <div className="flex border rounded-3xl h-screen flex-col w-1/2">
         <UserList />
         <ChatList />
       </div>
       {chat ? (
         <>
-          <div className="flex h-screen flex-col w-1/2">
+          <div className="border rounded-3xl flex w-full h-screen flex-col">
             <div className="flex-1 overflow-y-auto p-4">
               <MessageList messages={messages} />
             </div>
-            <div className="p-4 border-t">
+            <div className=" p-4">
               <form onSubmit={handleSubmit(handleSend())} className="flex">
                 <input
                   type="text"
                   placeholder="Type a message..."
                   {...register("text", { required: true })}
-                  className="flex-1 p-2 border rounded-l-lg focus:outline-none"
+                  className="flex-1 p-2 rounded-l-lg focus:outline-none"
                 />
                 <button
                   type="submit"

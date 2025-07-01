@@ -1,13 +1,17 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getUsers } from "../services/auth";
-import { createChat } from "../services/chat";
+import { createChat, getChats } from "../services/chat";
 import { auth } from "../services/firebase.js";
-import { useEffect } from "react";
+import { UsersRound } from "lucide-react";
 
 function UserList() {
   const { data: users = [], isLoading } = useQuery({
     queryKey: ["users"],
     queryFn: getUsers,
+  });
+  const { data: chats = [] } = useQuery({
+    queryKey: ["chats"],
+    queryFn: getChats,
   });
   const queryClient = useQueryClient();
   const { mutate } = useMutation({
@@ -32,24 +36,33 @@ function UserList() {
     });
   };
   return (
-    <div>
+    <div className="border-b flex flex-col h-full p-4 space-y-4">
       {isLoading ? (
         <div className="flex justify-center items-center h-screen">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500"></div>
         </div>
       ) : (
-        <ul className="space-y-4">
-          <li className="font-bold text-lg">Select a User to Chat</li>
-          {users.map((user) => (
-            <li
-              key={user.id}
-              onClick={() => handleCreateChat(user)}
-              className="cursor-pointer p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+        <>
+          <form>
+            <select
+              className="all-initial p-2 border rounded-lg"
+              onChange={(e) => {
+                const selectedUserId = e.target.value;
+                const selectedUser = users.find((u) => u.id === selectedUserId);
+                if (selectedUser) handleCreateChat(selectedUser);
+              }}
             >
-              {user.name}
-            </li>
-          ))}
-        </ul>
+              <option selected className="text-black" value="">
+                <UsersRound />
+              </option>
+              {users.map((user) => (
+                <option key={user.id} value={user.id}>
+                  {user.name}
+                </option>
+              ))}
+            </select>
+          </form>
+        </>
       )}
     </div>
   );
