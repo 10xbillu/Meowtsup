@@ -64,7 +64,6 @@ export const getChats = async () => {
       id: doc.id,
       ...doc.data(),
     }));
-    console.log("Fetched chats:", chatsList);
     return chatsList;
   } catch (error) {
     console.error("Error fetching chats:", error);

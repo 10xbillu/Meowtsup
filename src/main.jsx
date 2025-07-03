@@ -17,8 +17,6 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { index: true, element: <Home /> },
-      { path: "login", element: <Login /> },
-      { path: "signup", element: <Signup /> },
       {
         path: "chat",
         element: (
@@ -29,6 +27,8 @@ const router = createBrowserRouter([
       },
     ],
   },
+  { path: "login", element: <Login /> },
+  { path: "signup", element: <Signup /> },
 ]);
 
 const queryClient = new QueryClient({

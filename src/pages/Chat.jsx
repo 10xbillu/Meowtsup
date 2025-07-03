@@ -14,9 +14,6 @@ function Chat() {
   const { mutate } = useMutation({
     mutationKey: ["sendMessage"],
     mutationFn: sendMessage,
-    onSuccess: () => {
-      console.log("Message sent successfully");
-    },
   });
 
   const handleSend = () => async (data) => {
@@ -47,6 +44,14 @@ function Chat() {
       {chat ? (
         <>
           <div className="border rounded-3xl flex w-full h-screen flex-col">
+            <div>
+              <h1 className="text-2xl font-bold p-4 border-b">
+                {chat.participants.find(
+                  (participant) =>
+                    participant.name !== auth.currentUser.displayName
+                )?.name || "Chat"}
+              </h1>
+            </div>
             <div className="flex-1 overflow-y-auto p-4">
               <MessageList messages={messages} />
             </div>

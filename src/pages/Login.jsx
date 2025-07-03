@@ -20,7 +20,6 @@ function Login() {
     },
   });
   const onSubmit = (data) => {
-    console.log(data);
     mutate(data);
   };
   useEffect(() => {
@@ -56,7 +55,7 @@ function Login() {
         </form>
 
         <p className="text-sm text-center mt-4 text-gray-400">
-          Don’t have an account?{" "}
+          Don’t have an ccount?
           <Link to="/signup" className="text-blue-400 hover:underline">
             Signup
           </Link>

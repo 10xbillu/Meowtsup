@@ -17,9 +17,6 @@ export const signup = async ({ name, email, password }) => {
       name: data.user.displayName,
       lastSeen: null,
     });
-    console.log(auth.currentUser.displayName);
-    console.log("Signup successful:", data.user);
-    console.log("Document written with ID: ", docRef);
     return data.user.uid;
   } catch (error) {
     console.log("Signup failed:", error);
@@ -29,7 +26,6 @@ export const signup = async ({ name, email, password }) => {
 export const login = async ({ email, password }) => {
   try {
     const data = await signInWithEmailAndPassword(auth, email, password);
-    console.log("Login successful:", data.user);
     return data.user.uid;
   } catch (error) {
     console.log("Login failed:", error);

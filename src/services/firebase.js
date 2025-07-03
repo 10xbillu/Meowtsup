@@ -27,8 +27,4 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const rtdb = getDatabase(app);
 
-if (location.hostname === "localhost") {
-  connectDatabaseEmulator(rtdb, "localhost", 9000); 
-}
-
 const analytics = getAnalytics(app);

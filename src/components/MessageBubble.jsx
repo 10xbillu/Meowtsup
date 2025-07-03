@@ -4,7 +4,7 @@ import { auth } from "../services/firebase.js";
 function MessageBubble({ message = {} }) {
   return (
     <div
-      className={`flex items-start w-full mb-4 ${
+      className={`flex items-start w-full mb-1 ${
         message?.user === auth.currentUser.displayName
           ? "justify-end"
           : "justify-start"
