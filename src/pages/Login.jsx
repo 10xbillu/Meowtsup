@@ -38,13 +38,13 @@ function Login() {
             type="email"
             placeholder="Email"
             {...register("email")}
-            className="w-full px-4 py-2 bg-[#334155] text-white placeholder-gray-400 border border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 bg-[#334155] text-white placeholder-gray-400  -gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <input
             type="password"
             placeholder="Password"
             {...register("password")}
-            className="w-full px-4 py-2 bg-[#334155] text-white placeholder-gray-400 border border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 bg-[#334155] text-white placeholder-gray-400  -gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <button
             type="submit"

@@ -1,10 +1,9 @@
 import { Outlet } from "react-router";
-
 import NavRail from "./components/NavRail";
 
 function App() {
   return (
-    <div className="px-4 gap-4 flex flex-row w-screen h-screen">
+    <div className="grid grid-cols-[5%_auto] h-screen">
       <NavRail />
       <Outlet />
     </div>
@@ -12,3 +11,4 @@ function App() {
 }
 
 export default App;
+

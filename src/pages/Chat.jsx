@@ -7,6 +7,8 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { auth } from "../services/firebase.js";
 import useMessage from "../hooks/useMessage.js";
+import SearchBox from "../components/SearchBox.jsx";
+import { Avatar } from "@mui/material";
 
 function Chat() {
   const { chat } = useChat();
@@ -36,23 +38,27 @@ function Chat() {
   const [messages] = useMessage(chat?.id);
 
   return (
-    <div className="flex w-full gap-4 h-screen">
-      <div className="flex border rounded-3xl h-screen flex-col w-1/2">
-        <UserList />
+    <div className="grid bg-[#343A40] rounded-3xl grid-cols-[20%_auto] h-screen">
+      <div className="flex  rounded-3xl overflow-y-auto flex-col">
+        <div className="flex items-center">
+          <SearchBox />
+          <UserList />
+        </div>
         <ChatList />
       </div>
       {chat ? (
         <>
-          <div className="border rounded-3xl flex w-full h-screen flex-col">
-            <div>
-              <h1 className="text-2xl font-bold p-4 border-b">
+          <div className="rounded-3xl flex w-full h-screen flex-col">
+            <div className="flex items-center -b justify-start gap-3 p-4">
+              <Avatar sx={{ width: 56, height: 56 }}>A</Avatar>
+              <h1 className="text-2xl font-bold">
                 {chat.participants.find(
                   (participant) =>
                     participant.name !== auth.currentUser.displayName
                 )?.name || "Chat"}
               </h1>
             </div>
-            <div className="flex-1 overflow-y-auto p-4">
+            <div className="flex-1 w-full overflow-y-auto p-2">
               <MessageList messages={messages} />
             </div>
             <div className=" p-4">

@@ -1,7 +1,7 @@
 import { logout } from "../services/auth";
 import { useUser } from "../context/UserContext";
 import { useNavigate } from "react-router";
-import logo from "../assets/logo.png";
+import { Logout } from "@mui/icons-material";
 
 function NavRail() {
   const { user } = useUser();
@@ -11,7 +11,7 @@ function NavRail() {
     navigate("/");
   };
   return (
-    <div className="flex rounded-3xl py-6 flex-col items-center justify-between overflow-hidden w-20 h-screen border">
+    <div className="flex rounded-3xl py-6 flex-col items-center justify-between overflow-hidden h-screen ">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="48"
@@ -31,22 +31,7 @@ function NavRail() {
       </svg>
       {user && (
         <button onClick={handleLogout} className="h-14 p-2 rounded">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="48"
-            height="48"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#ababab"
-            strokeWidth="1"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="lucide lucide-log-out-icon lucide-log-out"
-          >
-            <path d="m16 17 5-5-5-5" />
-            <path d="M21 12H9" />
-            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-          </svg>
+          <Logout fontSize="large" />
         </button>
       )}
     </div>

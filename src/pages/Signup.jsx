@@ -32,19 +32,19 @@ function Signup() {
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
           <input
-            className="px-4 py-2 border border-gray-600 bg-[#334155] text-white placeholder-gray-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-4 py-2  -gray-600 bg-[#334155] text-white placeholder-gray-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="text"
             placeholder="Name"
             {...register("name")}
           />
           <input
-            className="px-4 py-2 border border-gray-600 bg-[#334155] text-white placeholder-gray-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-4 py-2  -gray-600 bg-[#334155] text-white placeholder-gray-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="email"
             placeholder="Email"
             {...register("email")}
           />
           <input
-            className="px-4 py-2 border border-gray-600 bg-[#334155] text-white placeholder-gray-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-4 py-2  -gray-600 bg-[#334155] text-white placeholder-gray-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
             type="password"
             placeholder="Password"
             {...register("password")}

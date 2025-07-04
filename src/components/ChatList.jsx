@@ -7,18 +7,18 @@ function ChatList() {
   const [chats, isLoading] = useChats();
   const handleChat = (chatItem) => setChat(chatItem);
   return (
-    <div className="flex flex-col h-full space-y-4">
+    <div className="flex flex-col w-full h-full space-y-4">
       {isLoading ? (
         <div className="flex justify-center items-center h-screen">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500"></div>
+          <div className="animate-spin rounded-full h-32 w-32 -b-2 -blue-500"></div>
         </div>
       ) : (
-        <ul className="bg-gray-800 rounded-3xl">
+        <ul className="bg-[#495057] rounded-3xl">
           {chats?.map((chatItem) => (
             <li
               key={chatItem.id}
               onClick={() => handleChat(chatItem)}
-              className={`cursor-pointer p-4 rounded-3xl bg-gray-800 w-full hover:bg-gray-900 transition-colors ${
+              className={`cursor-pointer p-4 rounded-3xl bg-[#495057] w-full hover:bg-[#6C757D] transition-colors ${
                 chat?.id === chatItem.id ? "bg-blue-100" : ""
               }`}
             >

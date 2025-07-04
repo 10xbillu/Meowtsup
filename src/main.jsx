@@ -11,6 +11,7 @@ import Chat from "./pages/Chat.jsx";
 import Secure from "./components/Secure.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ChatProvider from "./context/ChatContext.jsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
         path: "chat",
         element: (
           <Secure>
-            <Chat />
+            <Chat />  
           </Secure>
         ),
       },

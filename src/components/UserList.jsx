@@ -2,8 +2,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createChat } from "../services/chat";
 import { auth } from "../services/firebase.js";
 import useUsers from "../hooks/useUsers.js";
-import useChats from "../hooks/useChats.js";
-import { useEffect } from "react";
+import { Box, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 
 function UserList() {
   let [users, isLoading] = useUsers();
@@ -34,13 +34,15 @@ function UserList() {
     <div className="flex items-end flex-col p-4 space-y-4">
       {isLoading ? (
         <div className="flex justify-center items-center h-screen">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-500"></div>
+          <div className="animate-spin rounded-full h-32 w-32 -b-2 -blue-500"></div>
         </div>
       ) : (
         <>
-          <form>
-            <select
-              className="outline-none p-2 border rounded-lg"
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">
+              <PersonAddAlt1Icon />
+            </InputLabel>
+            <Select
               onChange={(e) => {
                 const selectedUserId = e.target.value;
                 const selectedUser = users?.find(
@@ -48,18 +50,18 @@ function UserList() {
                 );
                 if (selectedUser) handleCreateChat(selectedUser);
               }}
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              label={<PersonAddAlt1Icon />}
+              sx={{}}
             >
-              <option className="text-black" value="">
-                {/* <UsersRound /> */}
-                Select User
-              </option>
               {users.map((user) => (
-                <option key={user.id} value={user.id}>
+                <MenuItem key={user.id} value={user.id}>
                   {user.name}
-                </option>
+                </MenuItem>
               ))}
-            </select>
-          </form>
+            </Select>
+          </FormControl>
         </>
       )}
     </div>

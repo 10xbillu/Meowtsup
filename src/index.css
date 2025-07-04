@@ -2,11 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+
 * {
-  box-sizing: border-box;
+  box-sizing: -box;
 }
 
 body {
-  background-color: #3b3b3b;
-  color: #b3b3b3;
+  background-color: #212529;
+  color: #CED4DA;
 }
