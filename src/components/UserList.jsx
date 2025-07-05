@@ -39,10 +39,12 @@ function UserList() {
       ) : (
         <>
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">
+            <InputLabel id="select-user">
               <PersonAddAlt1Icon />
             </InputLabel>
             <Select
+              variant="outlined"
+              className=""
               onChange={(e) => {
                 const selectedUserId = e.target.value;
                 const selectedUser = users?.find(
@@ -53,7 +55,20 @@ function UserList() {
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               label={<PersonAddAlt1Icon />}
-              sx={{}}
+              sx={{
+                backgroundColor: "#f5f5f5",
+                borderRadius: "2rem",
+                color: "#666666",
+                "&:hover .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "transparent",
+                },
+                "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "transparent",
+                },
+                ".MuiSelect-icon": {
+                  color: "#666666",
+                },
+              }}
             >
               {users.map((user) => (
                 <MenuItem key={user.id} value={user.id}>
