@@ -18,4 +18,5 @@ const ChatProvider = ({ children }) => {
 };
 
 const useChat = () => useContext(ChatContext);
+
 export { ChatContext, useChat, ChatProvider };

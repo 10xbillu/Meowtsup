@@ -36,6 +36,7 @@ class FirestoreService {
         participants,
         createdAt,
         type,
+        id: chatRef.id,
       });
     } catch (error) {
       console.error(error);
@@ -59,24 +60,27 @@ class FirestoreService {
 
   static async createMessage({ text, senderId, timestamp, chatId }: Message) {
     try {
-      const messageRef = doc(database, "messages", chatId);
+      const messageRef = doc(collection(database, "chats", chatId, "messages"));
       await setDoc(messageRef, {
         text,
         senderId,
         timestamp,
-        id: chatId,
+        id: messageRef.id,
       });
     } catch (error) {
       console.error(error);
     }
   }
 
-  static async fetchMessages({ chatId }) {
-    console.log(chatId);
-    const q = collection(database, "messages", chatId);
-    onSnapshot(q, (doc) => {
-      console.log("Current data: ", doc);
+  static fetchMessages({ chatId, onUpdate }) {
+    const messageRef = collection(database, "chats", chatId, "messages");
+
+    const unSubs = onSnapshot(messageRef, (snapshot) => {
+      let data = snapshot.docs.map((doc) => doc.data());
+      onUpdate(data);
     });
+
+    return { unSubs };
   }
 
   static async deleteMessage() {}

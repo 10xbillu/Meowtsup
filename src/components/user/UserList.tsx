@@ -6,7 +6,7 @@ function UserList({ users }) {
   const handleCreateChat = (user) => {
     createChat({
       participants: [auth.currentUser.displayName, user.username],
-      type: "direct",
+      type: "direct", 
       createdAt: "createdAt",
     });
   };

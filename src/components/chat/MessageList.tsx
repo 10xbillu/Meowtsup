@@ -1,12 +1,14 @@
-import useChat from "@/hooks/useChat";
-import React from "react";
+import useMessages from "@/hooks/useMessages";
 
 function MessageList() {
-  const { messages } = useChat();
+  const { messages } = useMessages();
+
   return (
-    <div>
+    <div className="grid gap-1">
       {messages?.map((message) => (
-        <div>hii</div>
+        <div key={message.id} className="flex items-center justify-start">
+          <p>{message.text}</p>
+        </div>
       ))}
     </div>
   );

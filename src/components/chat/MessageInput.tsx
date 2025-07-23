@@ -1,12 +1,12 @@
-import { default as useChatHook } from "@/hooks/useChat";
 import { useState, type FormEvent } from "react";
 import { auth } from "@/lib";
 import { useChat } from "@/providers/ChatProvider";
+import useMessages from "@/hooks/useMessages";
 
 function MessageInput() {
   const { activeChat } = useChat();
   const [message, setMessage] = useState("");
-  const { sendMessage } = useChatHook();
+  const { sendMessage } = useMessages();
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (message.trim() !== "") {
