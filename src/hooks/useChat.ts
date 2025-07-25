@@ -8,15 +8,11 @@ const useChat = () => {
     await FirestoreService.cretaeChat({ participants, createdAt, type });
   };
 
-  const fetchChats = async () => {
-    const fetchedChats = await FirestoreService.fetchChats({
-      uid: auth.currentUser.uid,
-    });
-    setChats(fetchedChats);
-  };
-
   useEffect(() => {
-    fetchChats();
+    const unSubs = FirestoreService.fetchChats({
+      onUpdate: (data) => setChats(data),
+    });
+    return unSubs;
   }, []);
 
   return {

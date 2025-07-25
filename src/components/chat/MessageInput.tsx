@@ -12,7 +12,9 @@ function MessageInput() {
     if (message.trim() !== "") {
       sendMessage({
         text: message,
-        senderId: auth.currentUser?.uid,
+        sender: {
+          name: auth.currentUser?.displayName,
+        },
         timestamp: "",
         chatId: activeChat.id,
       });
