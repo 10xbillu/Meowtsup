@@ -1,4 +1,4 @@
-import { FirestoreService } from "@/lib";
+import { SearchService } from "@/repositories";
 import { useEffect, useState } from "react";
 
 const useUserSearch = (name = "") => {
@@ -6,9 +6,8 @@ const useUserSearch = (name = "") => {
   useEffect(() => {
     if (name.trim() !== "") {
       const id = setTimeout(async () => {
-        const response = await FirestoreService.searchUsers({ name });
+        const response = await SearchService.searchUserByName({ name });
         setUsers(response);
-        console.log("Searching");
       }, 300);
       return () => clearTimeout(id);
     }

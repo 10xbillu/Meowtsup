@@ -1,15 +1,10 @@
-import {
-  LoginSchema,
-  RegisterSchema,
-  type LoginCredentials,
-  type RegisterCredentials,
-} from "@/types/auth";
+import { type LoginCredentials, type RegisterCredentials } from "@/types/auth";
 import { createContext, useContext, useEffect, useState } from "react";
-import FirestoreService from "@/lib/firebase/firestore";
 import AuthService from "@/lib/firebase/auth";
 import { useNavigate } from "react-router";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/lib";
+import { UserService } from "@/repositories";
 
 const AuthContext = createContext(null);
 
@@ -31,7 +26,7 @@ const AuthProvider = ({ children }) => {
       email,
       password,
     }).then((uid) => {
-      FirestoreService.createUser({
+      UserService.createUser({
         uid,
         username,
         email,

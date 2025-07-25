@@ -1,5 +1,5 @@
-import { FirestoreService } from "@/lib";
 import { useChat } from "@/providers/ChatProvider";
+import { MessageService } from "@/repositories";
 import { useEffect, useState } from "react";
 
 const useMessages = () => {
@@ -7,11 +7,11 @@ const useMessages = () => {
   const [messages, setMessages] = useState([]);
 
   const sendMessage = async (message) => {
-    await FirestoreService.createMessage(message);
+    await MessageService.createMessage(message);
   };
 
   useEffect(() => {
-    const { unSubs } = FirestoreService.fetchMessages({
+    const { unSubs } = MessageService.fetchAllMessagesByChatId({
       chatId: activeChat.id,
       onUpdate: (messages) => setMessages(messages),
     });

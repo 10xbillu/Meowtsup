@@ -1,15 +1,15 @@
-import { auth, FirestoreService } from "@/lib";
+import { ChatService } from "@/repositories";
 import { useEffect, useState } from "react";
 
 const useChat = () => {
   const [chats, setChats] = useState([]);
 
   const createChat = async ({ participants, createdAt, type }) => {
-    await FirestoreService.cretaeChat({ participants, createdAt, type });
+    await ChatService.createChat({ participants, createdAt, type });
   };
 
   useEffect(() => {
-    const unSubs = FirestoreService.fetchChats({
+    const unSubs = ChatService.fetchAllMessagesByChatId({
       onUpdate: (data) => setChats(data),
     });
     return unSubs;
