@@ -9,7 +9,6 @@ function UserList({ users }) {
       type: "direct",
       createdAt: "createdAt",
     });
-    setVisible((prev) => !prev);
   };
 
   return (
