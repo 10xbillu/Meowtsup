@@ -1,11 +1,16 @@
 import useChat from "@/hooks/useChat";
-import { auth } from "@/lib";
+import { auth, chatExists } from "@/lib";
+import toast from "react-hot-toast";
 
 function UserList({ users }) {
-  const { createChat } = useChat();
+  const { createChat, chats } = useChat();
   const handleCreateChat = (user) => {
+    const participants = [auth.currentUser.displayName, user.username].sort();
+    if (chatExists(chats, participants)) {
+      return toast.error("Chat already exists");
+    }
     createChat({
-      participants: [auth.currentUser.displayName, user.username],
+      participants,
       type: "direct",
       createdAt: "createdAt",
     });

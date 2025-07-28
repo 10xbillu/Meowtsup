@@ -1,9 +1,15 @@
 import { auth, database } from "@/lib";
-import { collection, doc, onSnapshot, query, setDoc, where } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  onSnapshot,
+  query,
+  setDoc,
+  where,
+} from "firebase/firestore";
 
 class ChatService {
   static async createChat({ participants, createdAt, type }) {
-    console.log(participants, createdAt, type);
     try {
       const chatRef = doc(collection(database, "chats"));
       await setDoc(chatRef, {
@@ -16,8 +22,8 @@ class ChatService {
       console.error(error);
     }
   }
-
-  static fetchAllMessagesByChatId({ onUpdate }) {
+  
+  static fetchAllChatsByChatId({ onUpdate }) {
     try {
       const q = query(
         collection(database, "chats"),

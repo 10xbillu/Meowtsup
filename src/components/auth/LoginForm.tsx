@@ -13,14 +13,20 @@ function LoginForm() {
   const navigate = useNavigate();
   const {
     register,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     handleSubmit,
   } = useForm({
     resolver: zodResolver(LoginSchema),
   });
   const onSubmit = (data) => {
     login(data);
-    toast.success("Welcome back!");
+    toast.success("Welcome back!", {
+      style: {
+        borderRadius: "10px",
+        background: "#333",
+        color: "#fff",
+      },
+    });
     navigate("/app/chat");
   };
   return (
@@ -32,21 +38,25 @@ function LoginForm() {
             label={<Mail size={16} />}
             placeholder="Email"
             {...register("email")}
+            type="email"
+            required
+            error={errors.email?.message}
           />
-          {errors.email && (
-            <p className="text-red-500">{errors.email.message}</p>
-          )}
           <Input
             id="password"
             label={<Lock size={16} />}
             type="password"
             placeholder="Password"
             {...register("password")}
+            required
+            error={errors.password?.message}
           />
-          {errors.password && (
-            <p className="text-red-500">{errors.password.message}</p>
-          )}
-          <Button type="submit" className="mt-2" value="Login" />
+          <Button
+            disabled={isSubmitting}
+            type="submit"
+            className="mt-2"
+            value="Login"
+          />
         </form>
         <p className="text-center mt-3 text-base">
           Don't have an account?{" "}

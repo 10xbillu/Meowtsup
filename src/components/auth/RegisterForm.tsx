@@ -20,7 +20,13 @@ function RegisterForm() {
   });
   const onSubmit = (data) => {
     registerUser(data);
-    toast.success("Welcome!");
+    toast.success("Welcome!", {
+      style: {
+        borderRadius: "10px",
+        background: "#333",
+        color: "#fff",
+      },
+    });
     navigate("/app/chat");
   };
   return (
@@ -31,29 +37,25 @@ function RegisterForm() {
             id="username"
             label={<User size={16} />}
             placeholder="Username"
+            required
             {...register("username")}
+            error={errors.username.message}
           />
-          {errors.username && (
-            <p className="text-red-500">{errors.username.message}</p>
-          )}
           <Input
             id="email"
             label={<Mail size={16} />}
             placeholder="Email"
+            required
             {...register("email")}
+            error={errors.email.message}
           />
-          {errors.email && (
-            <p className="text-red-500">{errors.email.message}</p>
-          )}
           <Input
             id="password"
             label={<Lock size={16} />}
             placeholder="Password"
             {...register("password")}
+            error={errors.password?.message}
           />
-          {errors.password && (
-            <p className="text-red-500">{errors.password.message}</p>
-          )}
           <Button type="submit" className="mt-2" value="Login" />
         </form>
         <p className="text-center mt-3 text-base">

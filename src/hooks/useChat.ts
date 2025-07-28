@@ -9,7 +9,7 @@ const useChat = () => {
   };
 
   useEffect(() => {
-    const unSubs = ChatService.fetchAllMessagesByChatId({
+    const unSubs = ChatService.fetchAllChatsByChatId({
       onUpdate: (data) => setChats(data),
     });
     return unSubs;

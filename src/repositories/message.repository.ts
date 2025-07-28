@@ -20,7 +20,7 @@ class MessageService {
     const messageRef = collection(database, "chats", chatId, "messages");
 
     const unSubs = onSnapshot(messageRef, (snapshot) => {
-      let data = snapshot.docs.map((doc) => doc.data());
+      const data = snapshot.docs.map((doc) => doc.data());
       onUpdate(data);
     });
 
