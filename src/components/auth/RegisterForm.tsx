@@ -18,16 +18,21 @@ function RegisterForm() {
   } = useForm({
     resolver: zodResolver(RegisterSchema),
   });
-  const onSubmit = (data) => {
-    registerUser(data);
-    toast.success("Welcome!", {
-      style: {
-        borderRadius: "10px",
-        background: "#333",
-        color: "#fff",
-      },
-    });
-    navigate("/app/chat");
+  const onSubmit = async (data) => {
+    try {
+      await registerUser(data);
+      toast.success("Welcome!", {
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
+      navigate("/app/chat");
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
   };
   return (
     <div className="h-screen flex items-center justify-center">
@@ -37,17 +42,17 @@ function RegisterForm() {
             id="username"
             label={<User size={16} />}
             placeholder="Username"
-            required
             {...register("username")}
-            error={errors.username.message}
+            required
+            error={errors.username?.message}
           />
           <Input
             id="email"
             label={<Mail size={16} />}
             placeholder="Email"
-            required
             {...register("email")}
-            error={errors.email.message}
+            required
+            error={errors.email?.message}
           />
           <Input
             id="password"
@@ -56,11 +61,12 @@ function RegisterForm() {
             {...register("password")}
             error={errors.password?.message}
           />
-          <Button type="submit" className="mt-2" value="Login" />
+          <Button type="submit" className="mt-2" value="Sign Up" />
         </form>
+        <p>{errors.root && errors.root.message}</p>
         <p className="text-center mt-3 text-base">
           Have an account?{" "}
-          <Link className="text-fuchsia-400" to={"/auth/login"}>
+          <Link className="text-fuchsia-400" to={"/login"}>
             Login
           </Link>
         </p>

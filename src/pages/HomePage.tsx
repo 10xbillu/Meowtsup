@@ -9,14 +9,14 @@ function HomePage() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto">
           <a
-            href="/auth/login"
+            href="/login"
             className="w-full sm:w-auto px-6 py-3 bg-neutral-800 hover:bg-neutral-700 rounded-lg text-center transition-colors duration-200 border border-neutral-700 no-underline"
           >
             Login
           </a>
 
           <a
-            href="/auth/register"
+            href="/register"
             className="w-full sm:w-auto px-6 py-3 bg-fuchsia-600 hover:bg-fuchsia-500 text-neutral-100 rounded-lg text-center transition-colors duration-200 no-underline"
           >
             Get Started

@@ -18,16 +18,20 @@ function LoginForm() {
   } = useForm({
     resolver: zodResolver(LoginSchema),
   });
-  const onSubmit = (data) => {
-    login(data);
-    toast.success("Welcome back!", {
-      style: {
-        borderRadius: "10px",
-        background: "#333",
-        color: "#fff",
-      },
-    });
-    navigate("/app/chat");
+  const onSubmit = async (data) => {
+    try {
+      await login(data);
+      toast.success("Welcome back!", {
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
+      navigate("/app/chat");
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
   return (
     <div className="h-screen flex items-center justify-center">
@@ -58,9 +62,11 @@ function LoginForm() {
             value="Login"
           />
         </form>
+        <p>{errors.root && errors.root.message}</p>
+
         <p className="text-center mt-3 text-base">
           Don't have an account?{" "}
-          <Link className="text-fuchsia-400" to={"/auth/register"}>
+          <Link className="text-fuchsia-400" to={"/register"}>
             Signup
           </Link>
         </p>

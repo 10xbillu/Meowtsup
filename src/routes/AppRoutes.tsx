@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router";
 import { LoginPage, RegisterPage, HomePage, ChatPage } from "@/pages";
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
+import NotFound from "@/pages/NotFound";
 
 function AppRoutes() {
   return (
@@ -11,10 +12,11 @@ function AppRoutes() {
           <Route path="chat" element={<ChatPage />} />
         </Route>
       </Route>
-      <Route path="auth">
+      <Route >
         <Route path="register" element={<RegisterPage />} />
         <Route path="login" element={<LoginPage />} />
       </Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

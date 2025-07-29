@@ -9,11 +9,12 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+import { firebaseErrorHandler } from "../helper";
+import { UserService } from "@/repositories";
 
 class AuthService {
   static async register({ username, email, password }: RegisterCredentials) {
     try {
-      // await validatePassword(auth, password);
       const userCred = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -22,9 +23,16 @@ class AuthService {
       await updateProfile(auth.currentUser, {
         displayName: username,
       });
-      return userCred.user.uid;
+
+      await UserService.createUser({
+        uid: userCred.user.uid,
+        username,
+        email,
+        lastSeen: "lastSeen",
+      });
     } catch (error) {
       console.error(error);
+      firebaseErrorHandler(error.code);
     }
   }
   static async login({ email, password }: LoginCredentials) {
@@ -35,10 +43,7 @@ class AuthService {
 
       return uid;
     } catch (error) {
-      if (error.code === "auth/user-not-found") {
-        throw new Error("User not found");
-      }
-      console.dir(error.code);
+      firebaseErrorHandler(error.code);
     }
   }
 
@@ -47,6 +52,7 @@ class AuthService {
       await signOut(auth);
     } catch (error) {
       console.error(error);
+      firebaseErrorHandler(error.code);
     }
   }
 }
