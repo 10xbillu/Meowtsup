@@ -10,7 +10,7 @@ import {
 } from "firebase/firestore";
 
 class SearchService {
-  static async searchUserByName({ name }) {
+  static async searchUserByName({ name }: { name: string }) {
     try {
       const q = query(
         collection(database, "users"),

@@ -28,7 +28,7 @@ function LoginForm() {
           color: "#fff",
         },
       });
-      navigate("/app/chat");
+      navigate("/chat");
     } catch (error) {
       toast.error(error.message);
     }

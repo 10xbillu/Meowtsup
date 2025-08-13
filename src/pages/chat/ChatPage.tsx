@@ -1,17 +1,25 @@
 import ChatList from "@/components/chat/ChatList";
-import ChatWindow from "@/components/chat/ChatWindow";
 import UserSearch from "@/components/user/UserSearch";
+import { useChat } from "@/providers/ChatProvider";
+import { Outlet } from "react-router";
 
 function ChatPage() {
+  const { activeChat } = useChat();
   return (
-    <div className="grid grid-cols-[25%_auto]">
+    <div className="grid h-screen grid-cols-[25%_auto]">
       <div className="grid grid-rows-[20%_auto]">
         <UserSearch />
-        <div className="overflow-y-auto">
+        <div className="boder">
           <ChatList />
         </div>
       </div>
-      <ChatWindow />
+      {!activeChat ? (
+        <div className="h-full w-full bg-neutral-800 flex items-center justify-center text-neutral-600 text-3xl italic">
+          Select chat.
+        </div>
+      ) : (
+        <Outlet />
+      )}
     </div>
   );
 }

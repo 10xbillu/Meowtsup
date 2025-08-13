@@ -1,5 +1,14 @@
-export const chatExists = (chats: [], participants: []) => {
-  return !chats.every((chat) => chat.participants === participants.sort());
+export const chatExists = (
+  chats: { id: string; participants: string[] }[],
+  participants: string[]
+) => {
+  return chats.find(
+    (chat) =>
+      chat.participants.length === participants.length &&
+      [...chat.participants]
+        .sort()
+        .every((p, i) => p === [...participants].sort()[i])
+  );
 };
 
 export const firebaseErrorHandler = (err_code: string): never => {

@@ -28,7 +28,7 @@ function RegisterForm() {
           color: "#fff",
         },
       });
-      navigate("/app/chat");
+      navigate("/chat");
     } catch (error) {
       console.log(error);
       toast.error(error.message);

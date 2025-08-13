@@ -23,7 +23,7 @@ function HomePage() {
           </a>
 
           <a
-            href="/app/chat"
+            href="/chat"
             className="w-full sm:w-auto px-6 py-3 bg-neutral-800 hover:bg-neutral-700 rounded-lg text-center transition-colors duration-200 border border-neutral-700 no-underline"
           >
             Chat
