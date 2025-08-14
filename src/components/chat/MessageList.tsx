@@ -7,7 +7,7 @@ function MessageList() {
     <div className="grid gap-2">
       {messages?.map((message) => (
         <div key={message.id} className="flex items-center justify-start ">
-          <div className="w-10 mr-4 bg-neutral-700 flex items-center justify-center text-3xl font-semibold h-10 rounded-full">
+          <div className="w-10 mr-4 bg-neutral-700 flex items-center justify-center text-normal capitalize font-semibold h-10 rounded-full">
             {message.sender.name[0]}
           </div>
           <div>

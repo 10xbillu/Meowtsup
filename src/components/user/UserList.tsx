@@ -9,7 +9,7 @@ function UserList({ users, onClick }) {
             key={user.uid}
           >
             <div className="flex items-center px-3 py-1 justify-start">
-              <div className="w-10 mr-4 bg-neutral-700 flex items-center justify-center text-3xl font-semibold h-10 rounded-full">
+              <div className="w-10 mr-4 bg-neutral-700 flex items-center justify-center text-normal capitalize font-semibold h-10 rounded-full">
                 {user.username[0]}
               </div>
               <p>{user.username}</p>
