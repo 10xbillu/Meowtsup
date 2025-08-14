@@ -4,7 +4,7 @@ export const useFormValidation = (schema) => {
   const [errors, setErrors] = useState<Record<string, string[]>>({});
 
   const validate = (data: unknown) => {
-    let result = schema.safeParse(data);
+    const result = schema.safeParse(data);
 
     if (!result.success) {
       const errors = result.error?._zod.def.map((error) => ({

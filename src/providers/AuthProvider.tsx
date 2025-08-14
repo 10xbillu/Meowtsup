@@ -1,14 +1,30 @@
 import { type LoginCredentials, type RegisterCredentials } from "@/types/auth";
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  type ReactNode,
+} from "react";
 import AuthService from "@/lib/firebase/auth";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/lib";
+import type { User } from "@/types/firestore";
 
-const AuthContext = createContext(null);
+interface AuthContextProps {
+  currentUser: User | undefined;
+  login: (data: LoginCredentials) => Promise<any>;
+  register: (data: RegisterCredentials) => Promise<any>;
+  logout: () => Promise<any>;
+  loading: boolean;
+}
 
-const AuthProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(undefined);
+const AuthContext = createContext<AuthContextProps | null>(null);
+
+const AuthProvider = ({ children }: { children: ReactNode }) => {
+  const [currentUser, setCurrentUser] = useState<User | undefined>(undefined);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setCurrentUser(currentUser);
@@ -17,21 +33,15 @@ const AuthProvider = ({ children }) => {
 
     return unsubscribe;
   }, [auth]);
-  const register = async ({
-    username,
-    email,
-    password,
-  }: RegisterCredentials) => {
-    return await AuthService.register({
-      username,
-      email,
-      password,
-    });
+
+  const register = async (data: RegisterCredentials) => {
+    return await AuthService.register(data);
   };
 
-  const login = async ({ email, password }: LoginCredentials) => {
-    return await AuthService.login({ email, password });
+  const login = async (data: LoginCredentials) => {
+    return await AuthService.login(data);
   };
+
   const logout = async () => {
     return await AuthService.logout();
   };

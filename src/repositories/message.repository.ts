@@ -1,4 +1,5 @@
 import { database } from "@/lib";
+import type { Message } from "@/types/firestore";
 import { collection, doc, onSnapshot, setDoc } from "firebase/firestore";
 
 class MessageService {

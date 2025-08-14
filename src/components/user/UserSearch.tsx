@@ -7,26 +7,36 @@ import { auth, chatExists } from "@/lib";
 import { useNavigate } from "react-router";
 
 function UserSearch() {
+
   const [name, setName] = useState("");
+
   const { handleActiveChat } = useChat();
+
   const [users] = useUserSearch(name);
+
   const navigate = useNavigate();
+  
   const { createChat, chats } = useChatHook();
+  
   const handleCreateChat = (user) => {
     const participants = [auth.currentUser.displayName, user.username].sort();
+
     const chat = chatExists(chats, participants);
     if (chat) {
       handleActiveChat(chat);
       setName("");
       return navigate(`/chat/${chat.id}`);
     }
+
     createChat({
       participants,
       type: "direct",
       createdAt: "createdAt",
     });
+    
     setName("");
   };
+  
   return (
     <div>
       <div>

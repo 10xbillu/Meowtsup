@@ -10,7 +10,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 function LoginForm() {
   const { login } = useAuth();
+
   const navigate = useNavigate();
+
   const {
     register,
     formState: { errors, isSubmitting },
@@ -18,6 +20,7 @@ function LoginForm() {
   } = useForm({
     resolver: zodResolver(LoginSchema),
   });
+
   const onSubmit = async (data) => {
     try {
       await login(data);
@@ -33,6 +36,7 @@ function LoginForm() {
       toast.error(error.message);
     }
   };
+
   return (
     <div className="h-screen flex items-center justify-center">
       <div className="bg-neutral-800 rounded-3xl px-5 pt-5 pb-3">
