@@ -4,6 +4,7 @@ import ProtectedRoute from "@/components/auth/ProtectedRoute";
 import NotFound from "@/pages/NotFound";
 import { useAuth } from "@/providers/AuthProvider";
 import ChatWindow from "@/components/chat/ChatWindow";
+import { CallPage } from "@/pages/call/CallPage";
 
 function AppRoutes() {
   const { loading } = useAuth();
@@ -18,9 +19,9 @@ function AppRoutes() {
     <Routes>
       <Route index element={<HomePage />} />
       <Route element={<ProtectedRoute />}>
-          <Route path="chat" element={<ChatPage />}>
-            <Route path=":id" element={<ChatWindow />} />
-          </Route>
+        <Route path="chat" element={<ChatPage />}>
+          <Route path=":id" element={<ChatWindow />} />
+        </Route>
       </Route>
       <Route>
         <Route path="register" element={<RegisterPage />} />

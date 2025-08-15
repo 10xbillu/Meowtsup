@@ -4,6 +4,9 @@ import { fileURLToPath } from "node:url";
 
 // https://vite.dev/config/
 export default defineConfig({
+  server: {
+    allowedHosts: ["crisp-gazelle-terminally.ngrok-free.app"],
+  },
   plugins: [react()],
   resolve: {
     alias: [

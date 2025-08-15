@@ -23,6 +23,7 @@ export const ChatSchema = z.object({
 });
 
 export const MessageSchema = z.object({
+  id: z.string,
   text: z.string(),
   senderId: z.string(),
   timestamp: z.string(),
