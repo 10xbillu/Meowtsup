@@ -1,12 +1,11 @@
-import UserList from "./UserList";
-import useUserSearch from "@/hooks/useUserSearch";
 import { useState } from "react";
-import { default as useChatHook } from "@/hooks/useChat";
 import { useChat } from "@/providers/ChatProvider";
 import { auth, chatExists } from "@/lib";
 import { useNavigate } from "react-router";
+import { useChats, useUserSearch } from "@/hooks";
+import { UserList } from "./UserList";
 
-function UserSearch() {
+export function UserSearch() {
 
   const [name, setName] = useState("");
 
@@ -16,7 +15,7 @@ function UserSearch() {
 
   const navigate = useNavigate();
   
-  const { createChat, chats } = useChatHook();
+  const { createChat, chats } = useChats();
   
   const handleCreateChat = (user) => {
     const participants = [auth.currentUser.displayName, user.username].sort();
@@ -59,5 +58,3 @@ function UserSearch() {
     </div>
   );
 }
-
-export default UserSearch;

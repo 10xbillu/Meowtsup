@@ -1,9 +1,8 @@
-import React from 'react'
-
-function Avatar() {
+export function Avatar({ value }: { value: string }) {
   return (
-    <div>Avatar</div>
-  )
+    <div className="w-10 h-10 flex items-center justify-center bg-neutral-600 rounded-full text-white font-semibold text-lg">
+      {value}
+    </div>
+  );
 }
 
-export default Avatar

@@ -19,8 +19,7 @@ class SearchService {
         startAt(name),
         endAt(name + "\uf8ff")
       );
-      let data = [];
-      data = await getDocs(q);
+      const data = await getDocs(q);
       return data?.docs.map((data) => data.data());
     } catch (error) {
       console.error(error);

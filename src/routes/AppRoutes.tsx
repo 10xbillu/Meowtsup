@@ -1,11 +1,12 @@
 import { Route, Routes } from "react-router";
-import { LoginPage, RegisterPage, HomePage, ChatPage } from "@/pages";
 import ProtectedRoute from "@/routes/ProtectedRoute";
-import NotFound from "@/pages/NotFound";
 import { useAuth } from "@/providers/AuthProvider";
 import AuthProtecter from "./AuthProtecter";
 import { ChatWindow } from "@/components/chat";
 import ChatLayout from "@/layout/ChatLayout";
+import { HomePage, NotFound } from "@/pages";
+import { ChatPage } from "@/pages/chat";
+import { LoginPage, RegisterPage } from "@/pages/auth";
 
 function AppRoutes() {
   const { loading } = useAuth();

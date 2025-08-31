@@ -1,9 +1,9 @@
 import ChatList from "@/components/chat/ChatList";
-import UserSearch from "@/components/user/UserSearch";
+import { UserSearch } from "@/components/user";
 import { useChat } from "@/providers/ChatProvider";
 import { Outlet } from "react-router";
 
-function ChatPage() {
+export function ChatPage() {
   const { activeChat } = useChat();
   return (
     <div className="grid h-screen grid-cols-[25%_auto]">
@@ -23,5 +23,3 @@ function ChatPage() {
     </div>
   );
 }
-
-export default ChatPage;

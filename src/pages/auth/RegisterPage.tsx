@@ -1,6 +1,6 @@
-import RegisterForm from "@/components/auth/RegisterForm";
+import { RegisterForm } from "@/components/auth";
 
-function RegisterPage() {
+export function RegisterPage() {
   return (
     <div>
       <RegisterForm />

@@ -10,7 +10,7 @@ type InputProps = {
   required?: boolean;
 };
 
-const Input = forwardRef(
+export const Input = forwardRef(
   (
     {
       id,
@@ -54,5 +54,3 @@ const Input = forwardRef(
 );
 
 Input.displayName = "Input";
-
-export default Input;

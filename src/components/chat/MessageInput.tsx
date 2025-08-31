@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { auth } from "@/lib";
 import { useChat } from "@/providers/ChatProvider";
-import useMessages from "@/hooks/useMessages";
+import { useMessages } from "@/hooks";
 
 function MessageInput() {
   const { activeChat } = useChat();

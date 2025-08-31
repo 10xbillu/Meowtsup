@@ -2,7 +2,7 @@ import { useChat } from "@/providers/ChatProvider";
 import { MessageService } from "@/repositories";
 import { useEffect, useState } from "react";
 
-const useMessages = () => {
+export const useMessages = () => {
   const { activeChat } = useChat();
   const [messages, setMessages] = useState([]);
 
@@ -20,5 +20,3 @@ const useMessages = () => {
 
   return { sendMessage, messages };
 };
-
-export default useMessages;

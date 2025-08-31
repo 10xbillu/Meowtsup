@@ -1,9 +1,5 @@
-import React from 'react'
-
-function Spinner() {
+export function Spinner() {
   return (
     <div className=''>Loading...</div>
   )
 }
-
-export default Spinner

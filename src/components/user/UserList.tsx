@@ -1,4 +1,4 @@
-function UserList({ users, onClick }) {
+export function UserList({ users, onClick }) {
   return (
     <>
       <div className="absolute w-full rounded-lg overflow-hidden">
@@ -20,5 +20,3 @@ function UserList({ users, onClick }) {
     </>
   );
 }
-
-export default UserList;

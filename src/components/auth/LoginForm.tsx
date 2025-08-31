@@ -1,5 +1,4 @@
-import Input from "@components/ui/Input";
-import Button from "@components/ui/Button";
+import { Button, Input } from "@components/ui";
 import { Lock, Mail } from "lucide-react";
 import { useAuth } from "@/providers/AuthProvider";
 import { Link, useNavigate } from "react-router";
@@ -8,7 +7,7 @@ import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-function LoginForm() {
+export function LoginForm() {
   const { login } = useAuth();
 
   const navigate = useNavigate();
@@ -78,5 +77,3 @@ function LoginForm() {
     </div>
   );
 }
-
-export default LoginForm;

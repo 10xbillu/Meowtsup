@@ -1,8 +1,8 @@
-import { default as useChatHook } from "@/hooks/useChat";
+import { useChats } from "@/hooks";
 import ChatItem from "./ChatItem";
 
 function ChatList() {
-  const { chats } = useChatHook();
+  const { chats } = useChats();
   return (
     <div className="border-t border-t-neutral-700">
       {chats?.map((chat) => (

@@ -1,20 +1,19 @@
-function MessageItem({ message }) {
+import type { Message } from "@/types/firestore";
+import { Avatar } from "../ui";
+
+function MessageItem({ message }: Message) {
   return (
-    <>
-      <div key={message.id} className="flex py-2 items-center justify-start ">
-        <div className="w-10 mr-4 bg-neutral-600 flex items-center justify-center text-normal capitalize font-semibold h-10 rounded-full">
-          {message.sender.name[0]}
-        </div>
-        <div>
-          <p className="text-lg text-neutral-200 font-semibold tracking-normal">
-            {message.sender.name}
-          </p>
-          <p className="text-neutral-100 tracking-tight text-sm">
-            {message.text}
-          </p>
-        </div>
+    <div key={message.id} className="flex py-3 items-start space-x-4">
+      <Avatar value={message.sender.name[0].toUpperCase()} />
+
+      {/* Message content */}
+      <div className="flex flex-col">
+        <p className="text-sm font-semibold text-neutral-200 capitalize">
+          {message.sender.name}
+        </p>
+        <p className="text-sm text-neutral-100 mt-1">{message.text}</p>
       </div>
-    </>
+    </div>
   );
 }
 

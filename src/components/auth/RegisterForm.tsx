@@ -1,5 +1,4 @@
-import Input from "@components/ui/Input";
-import Button from "@components/ui/Button";
+import { Button, Input } from "@components/ui";
 import { Lock, Mail, User } from "lucide-react";
 import { useAuth } from "@/providers/AuthProvider";
 import { Link, useNavigate } from "react-router";
@@ -8,7 +7,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-function RegisterForm() {
+export function RegisterForm() {
   const { register: registerUser } = useAuth();
   const navigate = useNavigate();
   const {
@@ -75,5 +74,3 @@ function RegisterForm() {
     </div>
   );
 }
-
-export default RegisterForm;

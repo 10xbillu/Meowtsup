@@ -1,4 +1,4 @@
-function Button({
+export function Button({
   type = "button",
   value,
   className,
@@ -19,5 +19,3 @@ function Button({
     </button>
   );
 }
-
-export default Button;
