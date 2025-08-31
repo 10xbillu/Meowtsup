@@ -1,7 +1,7 @@
 function UserList({ users, onClick }) {
   return (
     <>
-      <div className="absolute w-full rounded-lg bg-neutral-800 overflow-hidden">
+      <div className="absolute w-full rounded-lg overflow-hidden">
         {users.map((user) => (
           <div
             onClick={() => onClick(user)}

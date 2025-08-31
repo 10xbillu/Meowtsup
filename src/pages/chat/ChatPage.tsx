@@ -7,9 +7,9 @@ function ChatPage() {
   const { activeChat } = useChat();
   return (
     <div className="grid h-screen grid-cols-[25%_auto]">
-      <div className="grid grid-rows-[20%_auto]">
+      <div className="grid bg-neutral-800 border-r border-r-neutral-700 grid-rows-[20%_auto]">
         <UserSearch />
-        <div className="boder">
+        <div>
           <ChatList />
         </div>
       </div>

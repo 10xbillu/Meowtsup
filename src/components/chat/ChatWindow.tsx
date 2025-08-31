@@ -1,10 +1,10 @@
 import MessageInput from "./MessageInput";
 import MessageList from "./MessageList";
 
-function ChatWindow() {
+export const ChatWindow = () => {
   return (
-    <div className="h-screen w-full grid border-l border-l-neutral-700">
-      <div className="grid grid-rows-[90%_auto] border border-neutral-800 p-4">
+    <div className="h-screen bg-neutral-800 w-full grid">
+      <div className="grid grid-rows-[92%_auto] border border-neutral-800 p-4">
         <div>
           <MessageList />
         </div>
@@ -12,6 +12,4 @@ function ChatWindow() {
       </div>
     </div>
   );
-}
-
-export default ChatWindow;
+};

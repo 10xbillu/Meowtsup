@@ -1,9 +1,11 @@
 import { Route, Routes } from "react-router";
 import { LoginPage, RegisterPage, HomePage, ChatPage } from "@/pages";
-import ProtectedRoute from "@/components/auth/ProtectedRoute";
+import ProtectedRoute from "@/routes/ProtectedRoute";
 import NotFound from "@/pages/NotFound";
 import { useAuth } from "@/providers/AuthProvider";
-import ChatWindow from "@/components/chat/ChatWindow";
+import AuthProtecter from "./AuthProtecter";
+import { ChatWindow } from "@/components/chat";
+import ChatLayout from "@/layout/ChatLayout";
 
 function AppRoutes() {
   const { loading } = useAuth();
@@ -18,11 +20,13 @@ function AppRoutes() {
     <Routes>
       <Route index element={<HomePage />} />
       <Route element={<ProtectedRoute />}>
+        <Route element={<ChatLayout />}>
           <Route path="chat" element={<ChatPage />}>
             <Route path=":id" element={<ChatWindow />} />
           </Route>
+        </Route>
       </Route>
-      <Route>
+      <Route element={<AuthProtecter />}>
         <Route path="register" element={<RegisterPage />} />
         <Route path="login" element={<LoginPage />} />
       </Route>

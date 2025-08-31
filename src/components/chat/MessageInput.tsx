@@ -15,7 +15,6 @@ function MessageInput() {
         sender: {
           name: auth.currentUser?.displayName,
         },
-        timestamp: "",
         chatId: activeChat.id,
       });
     }
@@ -28,11 +27,11 @@ function MessageInput() {
         onSubmit={handleSubmit}
       >
         <input
-          className="flex-auto rounded-3xl outline-none border-none px-4 py-2 bg-neutral-800 text-neutral-50"
+          className="flex-auto rounded-3xl outline-none border-none px-4 py-3 bg-neutral-700 text-neutral-50"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           type="text"
-          placeholder="Message @User"
+          placeholder={`Message`}
         />
       </form>
     </div>

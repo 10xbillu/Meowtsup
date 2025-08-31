@@ -21,7 +21,7 @@ export const database = getFirestore(app);
 export const realtimeDatabase = getDatabase(app);
 
 if (import.meta.env.DEV) {
-  connectAuthEmulator(auth, "http://127.0.0.1:9099");
-  connectFirestoreEmulator(database, "127.0.0.1", 8080);
-  connectDatabaseEmulator(realtimeDatabase, "127.0.0.1", 9000);
+  connectAuthEmulator(auth, "http://127.0.0.1:9099", { disableWarnings: true });
+  connectFirestoreEmulator(database, "127.0.0.1", 8080, { disableWarnings: true });
+  connectDatabaseEmulator(realtimeDatabase, "127.0.0.1", 9000, { disableWarnings: true });
 }

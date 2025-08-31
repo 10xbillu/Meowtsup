@@ -24,7 +24,7 @@ export const ChatSchema = z.object({
 
 export const MessageSchema = z.object({
   text: z.string(),
-  senderId: z.string(),
+  sender: z.string(),
   timestamp: z.string(),
   edited: z.boolean().optional(),
   replyTo: z.null().optional(),
