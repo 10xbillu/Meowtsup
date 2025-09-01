@@ -13,9 +13,9 @@ import type { User } from "@/types/firestore";
 
 interface AuthContextProps {
   currentUser: User | undefined;
-  login: (data: LoginCredentials) => Promise<any>;
-  register: (data: RegisterCredentials) => Promise<any>;
-  logout: () => Promise<any>;
+  login: (data: LoginCredentials) => Promise<void>;
+  register: (data: RegisterCredentials) => Promise<void>;
+  logout: () => Promise<void>;
   loading: boolean;
 }
 
@@ -35,15 +35,15 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, [auth]);
 
   const register = async (data: RegisterCredentials) => {
-    return await AuthService.register(data);
+     await AuthService.register(data);
   };
 
   const login = async (data: LoginCredentials) => {
-    return await AuthService.login(data);
+     await AuthService.login(data);
   };
 
   const logout = async () => {
-    return await AuthService.logout();
+     await AuthService.logout();
   };
 
   return (

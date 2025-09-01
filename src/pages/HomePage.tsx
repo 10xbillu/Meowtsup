@@ -10,7 +10,7 @@ export function HomePage() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto">
           <a
             href="/login"
-            className="w-full sm:w-auto px-6 py-3 bg-neutral-800 hover:bg-neutral-700 rounded-lg text-center transition-colors duration-200 border border-neutral-700 no-underline"
+            className="w-full sm:w-auto px-6 py-3 bg-neutral-800 hover:bg-neutral-700 rounded-lg text-center transition-colors duration-200 no-underline"
           >
             Login
           </a>
@@ -24,7 +24,7 @@ export function HomePage() {
 
           <a
             href="/chat"
-            className="w-full sm:w-auto px-6 py-3 bg-neutral-800 hover:bg-neutral-700 rounded-lg text-center transition-colors duration-200 border border-neutral-700 no-underline"
+            className="w-full sm:w-auto px-6 py-3 bg-neutral-800 hover:bg-neutral-700 rounded-lg text-center transition-colors duration-200 no-underline"
           >
             Chat
           </a>
